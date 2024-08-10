@@ -81,9 +81,10 @@ if st.sidebar.button('Gerar Relatório'):
         analise=analise
     )
 
-    try:
-        response = googleai.invoke(prompt)
-        st.subheader('Relatório Gerado:')
-        st.write(response.content)
-    except Exception as e:
-        st.error(f"Ocorreu um erro ao gerar o relatório: {str(e)}")
+    with st.spinner('Gerando relatório...'):
+        try:
+            response = googleai.invoke(prompt)
+            st.subheader('Relatório Gerado:')
+            st.write(response.content)
+        except Exception as e:
+            st.error(f"Ocorreu um erro ao gerar o relatório: {str(e)}")
