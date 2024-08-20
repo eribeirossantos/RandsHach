@@ -65,6 +65,27 @@ analises = [
 # Interface do usuário com Streamlit
 st.title('Gerador de Relatório Financeiro:')
 
+ # Add the copyright message in the footer
+st.markdown(
+        """
+        <style>
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: white;
+            color: black;
+            text-align: center;
+        }
+        </style>
+        <div class="footer">
+        <p>Copyright &copy; 2024 [Feito por Eduardo Ribeiro]</p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+)
+
 empresa = st.sidebar.selectbox('Selecione a empresa:', empresas)
 trimestre = st.sidebar.selectbox('Selecione o trimestre:', trimestres)
 ano = st.sidebar.selectbox('Selecione o ano:', anos)
@@ -88,3 +109,5 @@ if st.sidebar.button('Gerar Relatório'):
             st.write(response.content)
         except Exception as e:
             st.error(f"Ocorreu um erro ao gerar o relatório: {str(e)}")
+
+   
